@@ -34,6 +34,7 @@ namespace HRManagement.Application
             var employee = _employeeRepository.GetById(id).ContactInformation;
             var model = new GetContactInformationForEmployeeViewModel
             {
+                Id = employee.Id,
                 Address = employee.Address,
                 City = employee.City,
                 PostalCode = employee.PostalCode,
@@ -46,11 +47,13 @@ namespace HRManagement.Application
 
             return model;
         }
-        public List<GetTrainingForEmployeeViewModel> GetTrainingForEmployee(int? id)
+        public GetTrainingForEmployeeViewModel GetTrainingForEmployee(int? id)
         {
             var employeeTrainings = _employeeRepository.GetById(id).Trainings;
+            var model = new GetTrainingForEmployeeViewModel();
 
-            return employeeTrainings.Select(x => new GetTrainingForEmployeeViewModel
+            model.EmployeeId = id.Value;
+            model.Trainings = employeeTrainings.Select(x => new GetTrainingListForEmployeeViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -59,6 +62,8 @@ namespace HRManagement.Application
                 Status = x.Status,
                 StatusDescription = x.Status.GetDescription()
             }).ToList();
+
+            return model;
         }
 
         public EditEmployeeViewModel GetEmployeeForEdit(int? id)

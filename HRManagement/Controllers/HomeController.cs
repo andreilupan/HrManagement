@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace HRManagement.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IEmployeeService _employeeService;

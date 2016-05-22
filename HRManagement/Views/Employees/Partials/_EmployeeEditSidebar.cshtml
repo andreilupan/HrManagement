@@ -1,9 +1,10 @@
-﻿@model string
+﻿@model HRManagement.Models.Partials.EmployeeEditSidebarViewModel
 
-<div class="col-md-2">
-    <ul class="nav nav-pills">
-        <li role="presentation" class="@(Model == "employee" ? "active" : "")">@Html.ActionLink("Employee","Edit","Employees",new { id = 1 },null)</a></li>
-        <li role="presentation" class="@(Model == "trainings" ? "active" : "")">@Html.ActionLink("Trainings", "Trainings", "Employees",new { id = 1 },null)</a></li>
-        <li role="presentation" class="@(Model == "contactInformation" ? "active" : "")"><a href="#">Contact</a></li>
+<div >
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="@(Model.ActiveTab == "employee" ? "active" : "")"><a href="/Employees/Edit/@Model.EmployeeId">Employee</a></li>
+        <li role="presentation" class="@(Model.ActiveTab == "trainings" ? "active" : "")"><a href="/Employees/@Model.EmployeeId/Trainings">Trainings</a></li>
+        <li role="presentation" class="@(Model.ActiveTab == "contactInformation" ? "active" : "")"><a href="/Employees/@Model.EmployeeId/ContactInformation">Contact</a></li>
     </ul>
 </div>
+</br>

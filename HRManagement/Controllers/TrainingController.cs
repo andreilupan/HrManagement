@@ -12,6 +12,7 @@ using HRManagement.Application;
 
 namespace HRManagement.Controllers
 {
+    [Authorize]
     public class TrainingController : Controller
     {
         private ITrainingService _trainingService;

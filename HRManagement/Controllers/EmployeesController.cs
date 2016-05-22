@@ -7,6 +7,7 @@ using HRManagement.ViewModels.Employee;
 
 namespace HRManagement.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private IEmployeeService _employeeService;

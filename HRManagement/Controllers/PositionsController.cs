@@ -8,6 +8,7 @@ using HRManagement.Application;
 
 namespace HRManagement.Controllers
 {
+    [Authorize]
     public class PositionsController : Controller
     {
         private IPositionService _positionService;

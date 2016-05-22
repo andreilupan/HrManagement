@@ -12,6 +12,7 @@ using HRManagement.Application;
 
 namespace HRManagement.Controllers
 {
+    [Authorize]
     public class ProjectController : Controller
     {
         private IProjectService _projectService;

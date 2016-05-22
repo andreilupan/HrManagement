@@ -4,11 +4,11 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit</h2>   
 
-@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml","employee")
+@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", new HRManagement.Models.Partials.EmployeeEditSidebarViewModel { ActiveTab = "employee", EmployeeId = Model.Id })
 
-<div class="col-md-10">
+<div>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -136,7 +136,7 @@
 </div>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index",null,new { @class = "btn btn-default"})
 </div>
 
 @section Scripts {

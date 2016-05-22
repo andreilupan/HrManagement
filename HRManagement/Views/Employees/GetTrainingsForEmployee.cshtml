@@ -1,44 +1,47 @@
-﻿@model List<HRManagement.ViewModels.Employee.GetTrainingForEmployeeViewModel>
+﻿@model HRManagement.ViewModels.Employee.GetTrainingForEmployeeViewModel
 @{
     ViewBag.Title = "Trainings";
 }
 
-<h2>Trainings</h2>
-@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", "trainings")
+<h2>Edit</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Name")
-        </th>
-        <th>
-            @Html.DisplayName("StartDate")
-        </th>
-        <th>
-            @Html.DisplayName("EndDate")
-        </th>
-        <th>
-            @Html.DisplayName("Status")
-        </th>
-        <th></th>
-    </tr>
+@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", new HRManagement.Models.Partials.EmployeeEditSidebarViewModel { ActiveTab = "trainings", EmployeeId = Model.EmployeeId })
 
-    @foreach (var item in Model)
-    {
+<div>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+            <th>
+                @Html.DisplayName("StartDate")
+            </th>
+            <th>
+                @Html.DisplayName("EndDate")
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model.Trainings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
