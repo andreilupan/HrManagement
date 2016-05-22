@@ -1,6 +1,7 @@
 ﻿using HRManagement.DataAccess.Models.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace HRManagement.ViewModels.Employee
 {
@@ -20,6 +21,11 @@ namespace HRManagement.ViewModels.Employee
         public string MiddleName { get; set; }
         public int PositionId { get; set; }
         public int ProjectId { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public HttpPostedFileBase ImageUpload { get; set; }
+
         public List<Position> Positions { get; set; }
         public List<Project> Projects { get; set; }
     }

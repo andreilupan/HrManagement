@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,5 +50,7 @@ namespace HRManagement.ViewModels.Employee
         public string WorkEmail { get; set; }
         public string PrivateEmail { get; set; }
 
+        [DataType(DataType.Upload)]
+        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

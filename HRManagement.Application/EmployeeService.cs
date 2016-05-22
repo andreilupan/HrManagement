@@ -79,7 +79,8 @@ namespace HRManagement.Application
                 LastName = employee.LastName,
                 MiddleName = employee.MiddleName,
                 Positions = positions.ToList(),
-                Projects = projects.ToList()
+                Projects = projects.ToList(),
+                ImageUrl = employee.ImageUrl
             };
 
             if (employee.Position != null)
@@ -113,10 +114,16 @@ namespace HRManagement.Application
 
             return model;
         }
-        public void CreateEmployee(CreateEmployeeViewModel input)
+        public int CreateEmployee(CreateEmployeeViewModel input)
         {
             var employee = _employeeRepository.CreateEmployee(input.PositionId, input.ProjectId, input.LastName, input.MiddleName, input.FirstName, input.DateOfBirth, input.Gender, input.Nationality, input.Languages, input.NationalIdentificationNumber);
             _employeeRepository.AddContactInformation(employee.Id, input.Address, input.City, input.PostalCode, input.State, input.WorkPhone, input.PrivatePhone, input.WorkEmail, input.PrivateEmail);
+            return employee.Id;
+        }
+
+        public void AttachImage(int employeeId, string imageUrl)
+        {
+            _employeeRepository.AttachImage(employeeId, imageUrl);
         }
 
         /* public void CreateContactInformationForEmployee(string address, string city, string postalCode, string state, string workPhone, string privatePhone, string workEmail, string privateEmail)

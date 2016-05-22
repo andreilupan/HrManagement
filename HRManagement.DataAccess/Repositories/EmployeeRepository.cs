@@ -81,5 +81,16 @@ namespace HRManagement.DataAccess.Repositories
 
             return user.ContactInformation;
         }
+
+        public void AttachImage(int employeeId, string imageUrl)
+        {
+            var employee = _dbContext.Employees.Find(employeeId);
+
+            if(employee!= null)
+            {
+                employee.ImageUrl = imageUrl;
+                _dbContext.SaveChanges();
+            }
+        }
     }
 }

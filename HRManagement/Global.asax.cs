@@ -45,7 +45,8 @@ namespace HRManagement
             builder.RegisterType<ProjectRepository>().As<IProjectRepository>().InstancePerRequest();
             builder.RegisterType<TrainingRepository>().As<ITrainingRepository>().InstancePerRequest();
             //builder.RegisterType<ContactInformationRepository>().As<IContactInformationRepository>().InstancePerRequest();
-
+            builder.RegisterType<ImageService>().InstancePerRequest();
+            builder.RegisterGeneric(typeof(ExcelExporter<>)).As(typeof(IExcelExporter<>)).InstancePerRequest();
 
         }
     }

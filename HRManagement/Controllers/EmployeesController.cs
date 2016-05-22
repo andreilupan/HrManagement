@@ -4,6 +4,7 @@ using HRManagement.DataAccess;
 using HRManagement.DataAccess.Models.Models;
 using HRManagement.Application;
 using HRManagement.ViewModels.Employee;
+using System.Linq;
 
 namespace HRManagement.Controllers
 {
@@ -12,9 +13,14 @@ namespace HRManagement.Controllers
     {
         private IEmployeeService _employeeService;
         public HrContext db = new HrContext();
-        public EmployeesController(IEmployeeService employeeService)
+        private ImageService _imageService;
+        private IExcelExporter<EmployeeExportViewModel> _employeeExporter;
+
+        public EmployeesController(IEmployeeService employeeService, ImageService imageService, IExcelExporter<EmployeeExportViewModel> employeeExporter)
         {
             _employeeService = employeeService;
+            _imageService = imageService;
+            _employeeExporter = employeeExporter;
         }
 
         // GET: Employees
@@ -51,9 +57,11 @@ namespace HRManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CreateEmployeeViewModel input)
         {
-            _employeeService.CreateEmployee(input);
+            var employeeId = _employeeService.CreateEmployee(input);
+            var imageUrl = _imageService.SaveEmployeeImage(input.ImageUpload, employeeId);
+            _employeeService.AttachImage(employeeId, imageUrl);
             return RedirectToAction("Index");
-           
+
         }
 
         // GET: Employees/Edit/5
@@ -63,8 +71,9 @@ namespace HRManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var model = _employeeService.GetEmployeeForEdit(id);
-            
+
             return View(model);
         }
 
@@ -74,6 +83,12 @@ namespace HRManagement.Controllers
         public ActionResult Edit(EditEmployeeViewModel input)
         {
             _employeeService.SetChangesForEmployee(input.Id, input.PositionId, input.ProjectId, input.LastName, input.MiddleName, input.FirstName);
+
+            if (input.ImageUpload != null)
+            {
+                var imageUrl = _imageService.SaveEmployeeImage(input.ImageUpload, input.Id);
+                _employeeService.AttachImage(input.Id, imageUrl);
+            }
 
             return RedirectToAction("Index");
         }
@@ -123,6 +138,20 @@ namespace HRManagement.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet, ActionName("ExportEmployees")]
+        public FileResult ExportEmployees()
+        {
+            var employees = db.Employees.ToList().Select(x => new EmployeeExportViewModel
+            {
+                Id = x.Id,
+                Positions = x.Position.Name,
+                Trainings = x.Trainings.Any() ? x.Trainings.Select(y => y.Name).Aggregate((current, next) => current + " , " + next) : ""
+            }).ToList();
+            var url = _employeeExporter.Export(employees, "employees");
+            return File(url, "application/vnd.ms-excel", "employees.xls");
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -131,6 +160,13 @@ namespace HRManagement.Controllers
             }
             base.Dispose(disposing);
         }
-  
+
+    }
+
+    public class EmployeeExportViewModel
+    {
+        public int Id { get; set; }
+        public string Positions { get; set; }
+        public string Trainings { get; set; }
     }
 }

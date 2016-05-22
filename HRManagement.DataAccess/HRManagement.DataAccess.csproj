@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201604252143208_EmployeeForCreateViewModel.Designer.cs">
       <DependentUpon>201604252143208_EmployeeForCreateViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605221743510_AddedImageUrlOnEmployee.cs" />
+    <Compile Include="Migrations\201605221743510_AddedImageUrlOnEmployee.Designer.cs">
+      <DependentUpon>201605221743510_AddedImageUrlOnEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContactInformationRepository.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604252143208_EmployeeForCreateViewModel.resx">
       <DependentUpon>201604252143208_EmployeeForCreateViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605221743510_AddedImageUrlOnEmployee.resx">
+      <DependentUpon>201605221743510_AddedImageUrlOnEmployee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

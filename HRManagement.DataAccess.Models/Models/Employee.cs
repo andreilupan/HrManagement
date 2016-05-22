@@ -36,6 +36,9 @@ namespace HRManagement.DataAccess.Models.Models
         public string NationalIdentificationNumber { get; set; }
         [Display(Name = "Photo")]
         public string LogoUrl { get; set; }
+
+        public string ImageUrl { get; set; }
+
         public virtual Company Company { get; set; }
         public virtual Position Position { get; set; }
         public virtual List<Training> Trainings { get; set; }

@@ -12,6 +12,7 @@ namespace HRManagement.DataAccess.Repositories
         void SetChangesForEmployee(int employeeId, int positionId, int projectId, string lastName, string middleName, string firstName);
         Employee CreateEmployee (int positionId, int projectId, string lastName, string middleName, string firstName, DateTime dateOfBirth, Gender gender, string nationality, Language language, string nID);
         ContactInformation AddContactInformation(int employeeId, string address, string city, string postalCode, string state, string workPhone, string privatePhone, string workEmail, string privateEmail);
+        void AttachImage(int employeeId, string imageUrl);
     }
 
 }

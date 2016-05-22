@@ -53,6 +53,18 @@
       <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExporterObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Exporter.1.0.2\lib\ExporterObjects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="iTextSharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <HintPath>..\packages\iTextSharp-LGPL.4.1.6\lib\iTextSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -117,6 +129,10 @@
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Westwind.RazorHosting, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Westwind.RazorHosting.1.01\lib\net40\Westwind.RazorHosting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -183,9 +199,12 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TrainingController.cs" />
+    <Compile Include="ExcelExporter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IExcelExporter.cs" />
+    <Compile Include="ImageService.cs" />
     <Compile Include="Migrations\201604181928318_InitialCreate.cs" />
     <Compile Include="Migrations\201604181928318_InitialCreate.Designer.cs">
       <DependentUpon>201604181928318_InitialCreate.cs</DependentUpon>
@@ -219,12 +238,19 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EmployeeData\Images\11.png" />
+    <Content Include="EmployeeData\Images\12.png" />
+    <Content Include="EmployeeData\Images\13.png" />
+    <Content Include="EmployeeData\Images\14.png" />
+    <Content Include="EmployeeData\Images\17.png" />
+    <Content Include="EmployeeData\Images\8" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="readme_exporter.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -301,6 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="EmployeeData\Reports\" />
     <Folder Include="Views\Reports\" />
   </ItemGroup>
   <ItemGroup>
