@@ -1,0 +1,9 @@
+﻿@model string
+
+<div class="col-md-2">
+    <ul class="nav nav-pills">
+        <li role="presentation" class="@(Model == "employee" ? "active" : "")">@Html.ActionLink("Employee","Edit","Employees",new { id = 1 },null)</a></li>
+        <li role="presentation" class="@(Model == "trainings" ? "active" : "")">@Html.ActionLink("Trainings", "Trainings", "Employees",new { id = 1 },null)</a></li>
+        <li role="presentation" class="@(Model == "contactInformation" ? "active" : "")"><a href="#">Contact</a></li>
+    </ul>
+</div>

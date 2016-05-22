@@ -1,0 +1,44 @@
+﻿@model List<HRManagement.ViewModels.Employee.GetTrainingForEmployeeViewModel>
+@{
+    ViewBag.Title = "Trainings";
+}
+
+<h2>Trainings</h2>
+@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", "trainings")
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayName("StartDate")
+        </th>
+        <th>
+            @Html.DisplayName("EndDate")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+    }
+
+</table>
