@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using Models = HRManagement.DataAccess.Models.Models;
 
 namespace HRManagement.ViewModels.Employee
 {
@@ -26,7 +27,20 @@ namespace HRManagement.ViewModels.Employee
 
         public HttpPostedFileBase ImageUpload { get; set; }
 
-        public List<Position> Positions { get; set; }
+        public List<Models.Position> Positions { get; set; }
         public List<Project> Projects { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of birth")]
+        [Required]
+        public System.DateTime DateOfBirth { get; set; }
+        public Gender Gender { get; set; }
+        [Required]
+        public string Nationality { get; set; }
+        [Required]
+        public Language Languages { get; set; }
+        [Display(Name = "National identification number")]
+        [Required]
+        public string NationalIdentificationNumber { get; set; }
     }
 }

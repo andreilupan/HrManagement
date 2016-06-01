@@ -4,9 +4,9 @@
     ViewBag.Title = "Contact Information";
 }
 
-<h2>Edit</h2>
+<h2>Details</h2>
 
-@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", new HRManagement.Models.Partials.EmployeeEditSidebarViewModel { ActiveTab = "contactInformation", EmployeeId = Model.Id })
+@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", new HRManagement.Models.Partials.EmployeeEditSidebarViewModel { ActiveTab = "contactInformation", EmployeeId = Model.EmployeeId })
 
 
 <div>

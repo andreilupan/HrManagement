@@ -40,10 +40,12 @@ namespace HRManagement
             builder.RegisterType<PositionService>().As<IPositionService>().InstancePerRequest();
             builder.RegisterType<ProjectService>().As<IProjectService>().InstancePerRequest();
             builder.RegisterType<TrainingService>().As<ITrainingService>().InstancePerRequest();
+            builder.RegisterType<NotesService>().As<INotesService>().InstancePerRequest();
             builder.RegisterType<EmployeeRepository>().As<IEmployeeRepository>().InstancePerRequest();
             builder.RegisterType<PositionRepository>().As<IPositionRepository>().InstancePerRequest();
             builder.RegisterType<ProjectRepository>().As<IProjectRepository>().InstancePerRequest();
             builder.RegisterType<TrainingRepository>().As<ITrainingRepository>().InstancePerRequest();
+            builder.RegisterType<NotesRepository>().As<INotesRepository>().InstancePerRequest();
             //builder.RegisterType<ContactInformationRepository>().As<IContactInformationRepository>().InstancePerRequest();
             builder.RegisterType<ImageService>().InstancePerRequest();
             builder.RegisterGeneric(typeof(ExcelExporter<>)).As(typeof(IExcelExporter<>)).InstancePerRequest();

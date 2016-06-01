@@ -22,20 +22,21 @@ namespace HRManagement.Controllers
 
             var model = new[] {
             new {
-                Description = "0 -> 20",
+                Description = "0 - 20 years",
                 Values = groupedByAge.Where(x => x.Key <= 20).SelectMany(x => x).Count()
             },new
             {
-                Description = "20 -> 40",
+                Description = "20 - 40 years",
                 Values = groupedByAge.Where(x => x.Key <= 40 && x.Key > 20).SelectMany(x => x).Count()
             }, new
             {
-                Description = "40 -> 60",
+                Description = "40 - 60 years",
                 Values = groupedByAge.Where(x => x.Key <= 60 && x.Key > 40).SelectMany(x => x).Count()
             }
             };
             return Json(model, JsonRequestBehavior.AllowGet);
         }
+
 
         [HttpGet]
         [Route("population")]

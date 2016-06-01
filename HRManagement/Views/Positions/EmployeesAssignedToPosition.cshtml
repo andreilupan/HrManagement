@@ -1,0 +1,12 @@
+﻿@model HRManagement.ViewModels.Position.EmployeesAssignedToPositionViewModel
+@{
+    ViewBag.Title = "EmployeesAssignedToPosition";
+}
+
+<h2>EmployeesAssignedToPosition</h2>
+
+@foreach(var item in Model.Employees)
+{
+    @item.Description <br/>
+    @item.EmployeeFirstName<br/>
+}

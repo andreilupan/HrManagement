@@ -1,5 +1,5 @@
 ﻿using HRManagement.DataAccess.Models.Models;
-using HRManagement.ViewModels.Training;
+using HRManagement.ViewModels.Position;
 using System.Collections.Generic;
 
 namespace HRManagement.Application
@@ -7,6 +7,6 @@ namespace HRManagement.Application
     public interface ITrainingService
     {
         List<Training> GetAllTrainings();
-        List<EmployeesAssignedToTrainingViewModel> GetEmployeesForTraining(int? id);
+        List<ViewModels.Training.EmployeesAssignedToTrainingViewModel> GetEmployeesForTraining(int? id);
     }
 }

@@ -16,5 +16,10 @@ namespace HRManagement.DataAccess.Repositories
         {
             return _dbContext.Positions;
         }
+
+        public Position GetPositionById(int? id)
+        {
+            return _dbContext.Positions.Find(id);
+        }
     }
 }

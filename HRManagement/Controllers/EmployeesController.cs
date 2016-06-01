@@ -76,13 +76,23 @@ namespace HRManagement.Controllers
 
             return View(model);
         }
+        [HttpGet]
+        public ActionResult EditContactInformation(int? employeeId)
+        {
+            if (employeeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var model = _employeeService.GetContactInformationForEdit(employeeId);
+            return View("~/Views/Employees/GetContactInformationForEdit.cshtml", model);
+        }
 
         // POST: Employees/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditEmployeeViewModel input)
         {
-            _employeeService.SetChangesForEmployee(input.Id, input.PositionId, input.ProjectId, input.LastName, input.MiddleName, input.FirstName);
+            _employeeService.SetChangesForEmployee(input.Id, input.PositionId, input.ProjectId, input.LastName, input.MiddleName, input.FirstName, input.DateOfBirth, input.Gender, input.Nationality, input.NationalIdentificationNumber);
 
             if (input.ImageUpload != null)
             {
@@ -109,6 +119,20 @@ namespace HRManagement.Controllers
         public ActionResult GetContactInformationForEmployee(int employeeId)
         {
             var model = _employeeService.GetContactInformationForEmployee(employeeId);
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditContactInformation(EditContactInformationForEmployeeViewModel input)
+        {
+            _employeeService.EditContactInformation(input.Id, input.Address, input.City, input.PostalCode, input.State, input.WorkPhone, input.PrivatePhone, input.WorkEmail, input.PrivateEmail);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult GetEmploymentInformationForEmployee(int employeeId)
+        {
+            var model = _employeeService.GetEmploymentInformationForEmployee(employeeId);
             return View(model);
         }
 
@@ -144,7 +168,12 @@ namespace HRManagement.Controllers
             var employees = db.Employees.ToList().Select(x => new EmployeeExportViewModel
             {
                 Id = x.Id,
+                Name = x.FullName,
+                DateOfBirth = x.DateOfBirth,
+                Gender = x.Gender,
+                Nationality = x.Nationality,
                 Positions = x.Position.Name,
+                Languages = x.Languages,
                 Trainings = x.Trainings.Any() ? x.Trainings.Select(y => y.Name).Aggregate((current, next) => current + " , " + next) : ""
             }).ToList();
             var url = _employeeExporter.Export(employees, "employees");
@@ -168,5 +197,10 @@ namespace HRManagement.Controllers
         public int Id { get; set; }
         public string Positions { get; set; }
         public string Trainings { get; set; }
+        public System.DateTime DateOfBirth { get; set; }
+        public Gender Gender { get; set; }
+        public string Nationality { get; set; }
+        public Language Languages { get; set; }
+        public string Name { get; set; }
     }
 }

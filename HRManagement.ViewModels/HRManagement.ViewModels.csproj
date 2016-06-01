@@ -43,11 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee\CreateEmployeeViewModel.cs" />
+    <Compile Include="Employee\EditContactInformationForEmployeeViewModel.cs" />
     <Compile Include="Employee\EditEmployeeViewModel.cs" />
     <Compile Include="Employee\GetContactInformationForEmployeeViewModel.cs" />
+    <Compile Include="Employee\GetEmploymentInformationForEmployeeViewModel.cs" />
     <Compile Include="Employee\GetTrainingListForEmployeeViewModel.cs" />
     <Compile Include="Extensions\TrainingStatusExtensions.cs" />
     <Compile Include="Employee\GetTrainingForEmployeeViewModel.cs" />
+    <Compile Include="Notes\NotesIndexViewModel.cs" />
+    <Compile Include="Notes\NotesListItemViewModel.cs" />
+    <Compile Include="Position\EmployeesAssignedToPositionListItem.cs" />
+    <Compile Include="Position\EmployeesAssignedToPositionViewModel.cs" />
+    <Compile Include="Position\PositionIndexDataViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Training\EmployeesAssignedToTrainingViewModel.cs" />
     <Compile Include="Training\TrainingIndexDataViewModel.cs" />

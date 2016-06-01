@@ -17,5 +17,6 @@ namespace HRManagement.ViewModels.Employee
         public string PrivatePhone { get; set; }
         public string WorkEmail { get; set; }
         public string PrivateEmail { get; set; }
+        public int EmployeeId { get; set; }
     }
 }

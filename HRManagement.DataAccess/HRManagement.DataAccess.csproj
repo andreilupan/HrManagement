@@ -66,15 +66,39 @@
     <Compile Include="Migrations\201605221743510_AddedImageUrlOnEmployee.Designer.cs">
       <DependentUpon>201605221743510_AddedImageUrlOnEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605291159062_SalaryInsteadOfLogoUrl.cs" />
+    <Compile Include="Migrations\201605291159062_SalaryInsteadOfLogoUrl.Designer.cs">
+      <DependentUpon>201605291159062_SalaryInsteadOfLogoUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605300911562_UpdatedEmploymentInformation.cs" />
+    <Compile Include="Migrations\201605300911562_UpdatedEmploymentInformation.Designer.cs">
+      <DependentUpon>201605300911562_UpdatedEmploymentInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605302118132_AddedLevelOfEcperience.cs" />
+    <Compile Include="Migrations\201605302118132_AddedLevelOfEcperience.Designer.cs">
+      <DependentUpon>201605302118132_AddedLevelOfEcperience.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605302139229_AddedMoreonPositions.cs" />
+    <Compile Include="Migrations\201605302139229_AddedMoreonPositions.Designer.cs">
+      <DependentUpon>201605302139229_AddedMoreonPositions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605311943097_AddedNotes.cs" />
+    <Compile Include="Migrations\201605311943097_AddedNotes.Designer.cs">
+      <DependentUpon>201605311943097_AddedNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605311944373_AddedActivateOnNotes.cs" />
+    <Compile Include="Migrations\201605311944373_AddedActivateOnNotes.Designer.cs">
+      <DependentUpon>201605311944373_AddedActivateOnNotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ContactInformationRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
-    <Compile Include="Repositories\IContactInformationRepository.cs" />
     <Compile Include="Repositories\IEmployeeRepository.cs" />
+    <Compile Include="Repositories\INotesRepository.cs" />
     <Compile Include="Repositories\IPositionRepository.cs" />
     <Compile Include="Repositories\IProjectRepository.cs" />
     <Compile Include="Repositories\ITrainingRepository.cs" />
+    <Compile Include="Repositories\NotesRepository.cs" />
     <Compile Include="Repositories\PositionRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Repositories\TrainingRepository.cs" />
@@ -105,6 +129,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605221743510_AddedImageUrlOnEmployee.resx">
       <DependentUpon>201605221743510_AddedImageUrlOnEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605291159062_SalaryInsteadOfLogoUrl.resx">
+      <DependentUpon>201605291159062_SalaryInsteadOfLogoUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605300911562_UpdatedEmploymentInformation.resx">
+      <DependentUpon>201605300911562_UpdatedEmploymentInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605302118132_AddedLevelOfEcperience.resx">
+      <DependentUpon>201605302118132_AddedLevelOfEcperience.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605302139229_AddedMoreonPositions.resx">
+      <DependentUpon>201605302139229_AddedMoreonPositions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605311943097_AddedNotes.resx">
+      <DependentUpon>201605311943097_AddedNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605311944373_AddedActivateOnNotes.resx">
+      <DependentUpon>201605311944373_AddedActivateOnNotes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

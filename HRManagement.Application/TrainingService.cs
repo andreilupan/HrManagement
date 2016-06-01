@@ -1,8 +1,10 @@
 ﻿using HRManagement.DataAccess.Models.Models;
 using HRManagement.DataAccess.Repositories;
-using HRManagement.ViewModels.Training;
+using HRManagement.ViewModels.Position;
 using System.Collections.Generic;
 using System.Linq;
+using HRManagement.ViewModels.Training;
+using System;
 
 namespace HRManagement.Application
 {
@@ -17,14 +19,16 @@ namespace HRManagement.Application
         {
            return _trainingRepository.GetAllTrainings().ToList();
         }
-        public List<EmployeesAssignedToTrainingViewModel> GetEmployeesForTraining(int? id)
+
+        List<EmployeesAssignedToTrainingViewModel> ITrainingService.GetEmployeesForTraining(int? id)
         {
             var trainingEmployees = _trainingRepository.GetTrainingById(id).Employees;
 
             return trainingEmployees.Select(x => new EmployeesAssignedToTrainingViewModel
-            {   Id = x.Id,
-                EmployeeFirstName=x.FirstName,
-                EmployeeLastName=x.LastName
+            {
+                Id = x.Id,
+                EmployeeFirstName = x.FirstName,
+                EmployeeLastName = x.LastName
             }).ToList();
         }
     }

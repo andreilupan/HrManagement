@@ -10,5 +10,6 @@ namespace HRManagement.Application
    public interface IPositionService
     {
         List<Position> GetAllPositions();
+        List<ViewModels.Position.EmployeesAssignedToPositionListItem> GetEmployeesForPosition(int? id);
     }
 }

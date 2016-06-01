@@ -1,39 +1,70 @@
-﻿@model IEnumerable<HRManagement.DataAccess.Models.Models.Position>
+﻿@model HRManagement.ViewModels.Position.PositionIndexDataViewModel
 
 @{
     ViewBag.Title = "Index";
 }
-
+<p>
+    @Html.ActionLink("New", "Create", null, new { @class = "btn btn-default" })
+</p>
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
+        <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayName("Job title")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayName("Technology")
         </th>
+        <th>
+            @Html.DisplayName("Level of experience")
+        </th>
+      
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+    @foreach (var item in Model.Positions)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Employees Assigned", "EmployeesAssignedToPosition", "Position", new { positionId = @item.Id }, new { @class = "btn btn-success" })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Technology)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelOfExperience)
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+
+
+@if (Model.EmployeesAssignedToPosition != null)
+{
+    <table class="table table-condensed table-responsive table-hover">
+        <tr>
+            <td>@Html.DisplayName("First Name")</td>
+            <td>@Html.DisplayName("Last Name")</td>
+        </tr>
+        @foreach (var assignedEmployee in Model.EmployeesAssignedToPosition)
+        {
+            <tr>
+                <td>@assignedEmployee.EmployeeFirstName</td>
+                <td>@assignedEmployee.EmployeeLastName</td>
+            </tr>
+        }
+    </table>
 }
 
-</table>

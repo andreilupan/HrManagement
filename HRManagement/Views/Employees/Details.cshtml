@@ -5,6 +5,7 @@
 }
 
 <h2>Details</h2>
+@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", new HRManagement.Models.Partials.EmployeeEditSidebarViewModel { ActiveTab = "employee", EmployeeId = Model.Id })
 
 <div>
     <h4>Employee</h4>
@@ -67,11 +68,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LogoUrl)
+            @Html.DisplayNameFor(model => model.Salary)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LogoUrl)
+            @Html.DisplayFor(model => model.Salary)
         </dd>
 
     </dl>

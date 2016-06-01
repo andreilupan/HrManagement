@@ -6,5 +6,8 @@ namespace HRManagement.DataAccess.Repositories
     public interface IPositionRepository
     {
         IQueryable<Position> GetAll();
+
+        Position GetPositionById(int? id);
     }
+
 }

@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="EmployeeService.cs" />
     <Compile Include="IEmployeeService.cs" />
+    <Compile Include="INotesService.cs" />
     <Compile Include="ITrainingService.cs" />
     <Compile Include="IPositionService.cs" />
     <Compile Include="IProjectService.cs" />
+    <Compile Include="NotesService.cs" />
     <Compile Include="PositionService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

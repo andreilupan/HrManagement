@@ -8,6 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     <script src="~/Scripts/sidebar.js" ></script>
+    <script src="~/Scripts/notifications.js"></script>
 </head>
 <body>
 
@@ -27,6 +28,7 @@
                 <li>@Html.ActionLink("Positions", "Index", "Positions")</li>
                 <li>@Html.ActionLink("Trainings", "Index", "Training")</li>
                 <li>@Html.ActionLink("Projects", "Index", "Project")</li>
+                <li>@Html.ActionLink("Notes", "Index", "Notes")</li>
             </ul>
         </nav>
         <!-- /#sidebar-wrapper -->
@@ -43,7 +45,7 @@
                         @RenderBody()
                         <hr />
                         <footer>
-                            <p>&copy; @DateTime.Now.DayOfYear - HRManagement</p>
+                            <p>&copy;HRManagement</p>
                         </footer>
                     </div>
                 </div>

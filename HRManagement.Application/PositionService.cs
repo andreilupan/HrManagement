@@ -20,6 +20,18 @@ namespace HRManagement.Application
         {
             return _positionRepository.GetAll().ToList();
         }
-       
+
+        public List<ViewModels.Position.EmployeesAssignedToPositionListItem> GetEmployeesForPosition(int? id)
+        {
+            var positionEmployees = _positionRepository.GetPositionById(id).Employees;
+
+            return positionEmployees.Select(x => new ViewModels.Position.EmployeesAssignedToPositionListItem
+            {
+                Id = x.Id,
+                EmployeeFirstName = x.FirstName,
+                EmployeeLastName = x.LastName,
+            }).ToList();
+        }
+
     }
 }

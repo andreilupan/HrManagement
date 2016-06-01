@@ -22,7 +22,22 @@ namespace HRManagement.Controllers
         // GET: Positions
         public ActionResult Index()
         {
-            var model = _positionService.GetAllPositions();
+            var model = new ViewModels.Position.PositionIndexDataViewModel
+            {
+                Positions = _positionService.GetAllPositions(),
+            };
+
+            return View(model);
+        }
+
+        [Route("Positions/EmployeesAssignedToPosition/{positionId}")]
+        public ActionResult EmployeesAssignedToPosition(int positionId)
+        {
+            var model = new ViewModels.Position.EmployeesAssignedToPositionViewModel
+            {
+                Employees = _positionService.GetEmployeesForPosition(positionId)
+            };
+
             return View(model);
         }
 

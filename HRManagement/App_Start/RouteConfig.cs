@@ -16,6 +16,12 @@ namespace HRManagement
             routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
+                name: "EditEmployeeContactInformation",
+                url: "{controller}/{employeeId}/editContactInformation",
+                defaults: new { controller = "Employees", action = "EditContactInformation" }
+                );
+
+            routes.MapRoute(
                 name: "EmployeeTrainings",
                 url: "{controller}/{employeeId}/trainings",
                 defaults: new { controller = "Employees", action = "GetTrainingsForEmployee" }
@@ -25,6 +31,12 @@ namespace HRManagement
                name: "EmployeeContactInformation",
                url: "{controller}/{employeeId}/contactInformation",
                defaults: new { controller = "Employees", action = "GetContactInformationForEmployee" }
+               );
+
+            routes.MapRoute(
+               name: "EmployeeEmploymentInformation",
+               url: "{controller}/{employeeId}/employmentInformation",
+               defaults: new { controller = "Employees", action = "GetEmploymentInformationForEmployee" }
                );
 
             routes.MapRoute(
