@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using HRManagement.Controllers;
+using System.Collections.Generic;
 
 namespace HRManagement
 {
-    public interface IExcelExporter<T>
+    public interface IExcelExporter
     {
-        string Export(IEnumerable<T> data, string filename);
+        string ExportEmployees(IEnumerable<EmployeeExportViewModel> data, string filename);
     }
 }

@@ -14,9 +14,9 @@ namespace HRManagement.Controllers
         private IEmployeeService _employeeService;
         public HrContext db = new HrContext();
         private ImageService _imageService;
-        private IExcelExporter<EmployeeExportViewModel> _employeeExporter;
+        private IExcelExporter _employeeExporter;
 
-        public EmployeesController(IEmployeeService employeeService, ImageService imageService, IExcelExporter<EmployeeExportViewModel> employeeExporter)
+        public EmployeesController(IEmployeeService employeeService, ImageService imageService, IExcelExporter employeeExporter)
         {
             _employeeService = employeeService;
             _imageService = imageService;
@@ -226,16 +226,16 @@ namespace HRManagement.Controllers
             var employees = db.Employees.ToList().Select(x => new EmployeeExportViewModel
             {
                 Id = x.Id,
-                Name = x.FullName,
+                Name = x.FirstName + " " + x.MiddleName +" " + x.LastName,
                 DateOfBirth = x.DateOfBirth,
-                Gender = x.Gender,
+                Gender = x.Gender.ToString(),
                 Nationality = x.Nationality,
                 Positions = x.Position.Name,
-                Languages = x.Languages,
+                Languages = "English",
                 Trainings = x.Trainings.Any() ? x.Trainings.Select(y => y.Name).Aggregate((current, next) => current + " , " + next) : ""
             }).ToList();
-            var url = _employeeExporter.Export(employees, "employees");
-            return File(url, "application/vnd.ms-excel", "employees.xls");
+            var url = _employeeExporter.ExportEmployees(employees, "employees");
+            return File(url, "application/vnd.ms-excel", "employees.xlsx");
         }
 
 
@@ -256,9 +256,9 @@ namespace HRManagement.Controllers
         public string Positions { get; set; }
         public string Trainings { get; set; }
         public System.DateTime DateOfBirth { get; set; }
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
         public string Nationality { get; set; }
-        public Language Languages { get; set; }
+        public string Languages { get; set; }
         public string Name { get; set; }
     }
 }

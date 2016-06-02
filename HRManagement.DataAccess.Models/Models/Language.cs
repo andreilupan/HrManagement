@@ -16,7 +16,5 @@ namespace HRManagement.DataAccess.Models.Models
         German,
         Italian,
         Greek,
-
-    
     }
 }
