@@ -234,6 +234,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Partials\EmployeeDetailsSidebarViewModel.cs" />
     <Compile Include="Models\Partials\EmployeeEditSidebarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -330,7 +331,7 @@
     <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Project\Edit.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
-    <Content Include="Views\Employees\Partials\_EmployeeEditSidebar.cshtml" />
+    <Content Include="Views\Employees\Partials\_EmployeeDetailsSidebar.cshtml" />
     <Content Include="Views\Employees\GetTrainingsForEmployee.cshtml" />
     <Content Include="Views\Employees\GetContactInformationForEmployee.cshtml" />
     <Content Include="Views\Employees\GetEmploymentInformationForEmployee.cshtml" />
@@ -338,6 +339,10 @@
     <Content Include="Views\Positions\EmployeesAssignedToPosition.cshtml" />
     <Content Include="Views\Notes\Index.cshtml" />
     <Content Include="Scripts\notifications.js" />
+    <Content Include="Views\Employees\Partials\_EmployeeEditSidebar.cshtml" />
+    <Content Include="Views\Employees\GetEmploymentInformationForEdit.cshtml" />
+    <Content Include="Views\Employees\GetFinancialInformationforEdit.cshtml" />
+    <Content Include="Views\Employees\GetFinancialInformationForEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

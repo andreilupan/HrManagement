@@ -45,8 +45,11 @@
     <Compile Include="Employee\CreateEmployeeViewModel.cs" />
     <Compile Include="Employee\EditContactInformationForEmployeeViewModel.cs" />
     <Compile Include="Employee\EditEmployeeViewModel.cs" />
+    <Compile Include="Employee\EditEmploymentInfomationForEmployeeViewModel.cs" />
+    <Compile Include="Employee\EditFinancialInformationForEmployeeViewModel.cs" />
     <Compile Include="Employee\GetContactInformationForEmployeeViewModel.cs" />
     <Compile Include="Employee\GetEmploymentInformationForEmployeeViewModel.cs" />
+    <Compile Include="Employee\GetFinancialInformationForEmployeeViewModel.cs" />
     <Compile Include="Employee\GetTrainingListForEmployeeViewModel.cs" />
     <Compile Include="Extensions\TrainingStatusExtensions.cs" />
     <Compile Include="Employee\GetTrainingForEmployeeViewModel.cs" />

@@ -40,7 +40,7 @@ namespace HRManagement.DataAccess.Repositories
             _dbContext.SaveChanges();
         }
 
-        public Employee CreateEmployee(int positionId, int projectId, string lastName, string middleName, string firstName, DateTime dateOfBirth, Gender gender, string nationality, Language language, string nID, Decimal salary)
+        public Employee CreateEmployee(int positionId, int projectId, string lastName, string middleName, string firstName, DateTime dateOfBirth, Gender gender, string nationality, Language language, string nID)
         {
             var position = _dbContext.Positions.Find(positionId);
             var project = _dbContext.Projects.Find(projectId);
@@ -57,7 +57,6 @@ namespace HRManagement.DataAccess.Repositories
                 Nationality = nationality,
                 Languages = language,
                 NationalIdentificationNumber = nID,
-                Salary = salary
             });
 
             _dbContext.SaveChanges();
@@ -87,7 +86,38 @@ namespace HRManagement.DataAccess.Repositories
             return user.ContactInformation;
         }
 
-public void EditContactInformation(int employeeId, string address, string city, string postalCode, string state, string workPhone, string privatePhone, string workEmail, string privateEmail)
+        public FinancialInformation AddFinancialInformation(int employeeId, Decimal salary, DateTime nextSalaryDiscussion, string accountNumber, string bank)
+        {
+            var user = _dbContext.Employees.Find(employeeId);
+
+            var financialInformation = new FinancialInformation
+            {
+                Salary = salary,
+                NextSalaryIncrease = nextSalaryDiscussion,
+                AccountNumber = accountNumber,
+                Bank = bank
+            };
+
+            user.FinancialInformation = financialInformation;
+            _dbContext.SaveChanges();
+
+            return user.FinancialInformation;
+        }
+
+        public void EditFinancialInformation(int employeeId, Decimal salary, DateTime nextSalaryDiscussion, string accountNumber, string bank)
+        {
+            var employee = _dbContext.Employees.Find(employeeId);
+
+            employee.FinancialInformation.Salary = salary;
+            employee.FinancialInformation.NextSalaryIncrease = nextSalaryDiscussion;
+            employee.FinancialInformation.AccountNumber = accountNumber;
+            employee.FinancialInformation.Bank = bank;
+
+            _dbContext.SaveChanges();
+
+        }
+
+        public void EditContactInformation(int employeeId, string address, string city, string postalCode, string state, string workPhone, string privatePhone, string workEmail, string privateEmail)
         {
             var employee = _dbContext.Employees.Find(employeeId);
 
@@ -102,6 +132,18 @@ public void EditContactInformation(int employeeId, string address, string city, 
 
             _dbContext.SaveChanges();
 
+        }
+
+        public void EditEmploymentInformation(int employeeId, DateTime employmentDate, DateTime jubileeDate, DateTime dateProfessionalCompetence, DateTime dateTeachingSkills)
+        {
+            var employee = _dbContext.Employees.Find(employeeId);
+
+            employee.EmploymentInformation.EmploymentDate = employmentDate;
+            employee.EmploymentInformation.JubileeDate = jubileeDate;
+            employee.EmploymentInformation.DateForFormalProfessionalCompetence = dateProfessionalCompetence;
+            employee.EmploymentInformation.DateForFormalTeachingSkills = dateTeachingSkills;
+
+            _dbContext.SaveChanges();
         }
 
         public EmploymentInformation AddEmploymentInformation(int employeeId, DateTime employmentDate, DateTime jubileeDate, DateTime dateProfessionalCompetence, DateTime dateTeachingSkills)

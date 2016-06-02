@@ -6,12 +6,12 @@
 
 <h2>Details</h2>
 
-@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", new HRManagement.Models.Partials.EmployeeEditSidebarViewModel { ActiveTab = "employmentInformation", EmployeeId = Model.EmployeeId })
+@Html.Partial("~/Views/Employees/Partials/_EmployeeDetailsSidebar.cshtml", new HRManagement.Models.Partials.EmployeeDetailsSidebarViewModel { ActiveTab = "employmentInformation", EmployeeId = Model.EmployeeId })
 
 <div>
 
     <div>
-        <h4>Employee</h4>
+        <h4>Employment information</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -49,3 +49,8 @@
         </dl>
     </div>
 </div>
+
+<p>
+    @Html.ActionLink("Edit", "EditEmploymentInformation", new { id = Model.EmployeeId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+</p>

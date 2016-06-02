@@ -34,8 +34,6 @@ namespace HRManagement.DataAccess.Models.Models
         public Language Languages { get; set; }
         [Display(Name = "National identification number")]
         public string NationalIdentificationNumber { get; set; }
-        [Display(Name = "Salary (EUR)")]
-        public Decimal Salary { get; set; }
 
         public string ImageUrl { get; set; }
 
@@ -44,6 +42,7 @@ namespace HRManagement.DataAccess.Models.Models
         public virtual List<Training> Trainings { get; set; }
         public virtual ContactInformation ContactInformation { get; set; }
         public virtual EmploymentInformation EmploymentInformation { get; set; }
+        public virtual FinancialInformation FinancialInformation { get; set; }
         public virtual List<Certification> Certification { get; set; }
         public virtual List<Competency> Competencies { get; set; }
         public virtual Project Project { get; set; }

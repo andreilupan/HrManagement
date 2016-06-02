@@ -90,6 +90,14 @@
     <Compile Include="Migrations\201605311944373_AddedActivateOnNotes.Designer.cs">
       <DependentUpon>201605311944373_AddedActivateOnNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606020851509_AddedFinancialInformation.cs" />
+    <Compile Include="Migrations\201606020851509_AddedFinancialInformation.Designer.cs">
+      <DependentUpon>201606020851509_AddedFinancialInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606020854168_AddedFinancialInformation2.cs" />
+    <Compile Include="Migrations\201606020854168_AddedFinancialInformation2.Designer.cs">
+      <DependentUpon>201606020854168_AddedFinancialInformation2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
@@ -147,6 +155,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605311944373_AddedActivateOnNotes.resx">
       <DependentUpon>201605311944373_AddedActivateOnNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606020851509_AddedFinancialInformation.resx">
+      <DependentUpon>201606020851509_AddedFinancialInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606020854168_AddedFinancialInformation2.resx">
+      <DependentUpon>201606020854168_AddedFinancialInformation2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

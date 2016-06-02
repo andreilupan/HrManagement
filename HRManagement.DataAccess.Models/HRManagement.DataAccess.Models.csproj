@@ -47,6 +47,7 @@
     <Compile Include="Models\ContactInformation.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmploymentInformation.cs" />
+    <Compile Include="Models\FinancialInformation.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\LevelOfExperience.cs" />

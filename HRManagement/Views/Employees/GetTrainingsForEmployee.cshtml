@@ -5,7 +5,7 @@
 
 <h2>Details</h2>
 
-@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", new HRManagement.Models.Partials.EmployeeEditSidebarViewModel { ActiveTab = "trainings", EmployeeId = Model.EmployeeId })
+@Html.Partial("~/Views/Employees/Partials/_EmployeeDetailsSidebar.cshtml", new HRManagement.Models.Partials.EmployeeDetailsSidebarViewModel { ActiveTab = "trainings", EmployeeId = Model.EmployeeId })
 
 <div>
     <table class="table">
@@ -45,3 +45,8 @@
 
     </table>
 </div>
+
+<p>
+    @Html.ActionLink("Edit","Edit","Training", new { id = Model.Trainings.Select(x => x.Id) }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+</p>

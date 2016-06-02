@@ -48,6 +48,22 @@ namespace HRManagement.Application
             return model;
         }
 
+        public GetFinancialInformationForEmployeeViewModel GetFinancialInformationForEmployee(int? id)
+        {
+            var employee = _employeeRepository.GetById(id);
+            var model = new GetFinancialInformationForEmployeeViewModel
+            {
+                Id = employee.FinancialInformation.Id,
+                EmployeeId = employee.Id,
+                Salary = employee.FinancialInformation.Salary,
+                NextSalaryIncrease = employee.FinancialInformation.NextSalaryIncrease,
+                AccountNumber = employee.FinancialInformation.AccountNumber,
+                Bank = employee.FinancialInformation.Bank
+            };
+
+            return model;
+        }
+
         public GetEmploymentInformationForEmployeeViewModel GetEmploymentInformationForEmployee(int? id)
         {
             var employee = _employeeRepository.GetById(id);
@@ -83,13 +99,50 @@ namespace HRManagement.Application
             return model;
         }
 
+        public EditEmploymentInfomationForEmployeeViewModel GetEmploymentInformationForEdit(int? id)
+        {
+            var employee = _employeeRepository.GetById(id);
+
+            var model = new EditEmploymentInfomationForEmployeeViewModel
+            {
+                Id = employee.EmploymentInformation.Id,
+                EmployeeId = employee.Id,
+                EmploymentDate = employee.EmploymentInformation.EmploymentDate,
+                JubileeDate = employee.EmploymentInformation.JubileeDate,
+                DateForFormalProfessionalCompetence = employee.EmploymentInformation.DateForFormalProfessionalCompetence,
+                DateForFormalTeachingSkills = employee.EmploymentInformation.DateForFormalTeachingSkills
+            };
+
+            return model;
+        }
+
+        public EditFinancialInformationForEmployeeViewModel GetFinancialInformationForEdit(int? id)
+        {
+            var employee = _employeeRepository.GetById(id);
+
+            var model = new EditFinancialInformationForEmployeeViewModel
+            {
+                Id = employee.FinancialInformation.Id,
+                EmployeeId = employee.Id,
+                Salary = employee.FinancialInformation.Salary,
+                NextSalaryIncrease = employee.FinancialInformation.NextSalaryIncrease,
+                AccountNumber = employee.FinancialInformation.AccountNumber,
+                Bank = employee.FinancialInformation.Bank
+
+                 
+            };
+
+            return model;
+        }
+
         public EditContactInformationForEmployeeViewModel GetContactInformationForEdit(int? id)
         {
             var employee = _employeeRepository.GetById(id);
 
             var model = new EditContactInformationForEmployeeViewModel
             {
-                Id = employee.Id,
+                Id = employee.ContactInformation.Id,
+                EmployeeId = employee.Id,
                 Address = employee.ContactInformation.Address,
                 City = employee.ContactInformation.City,
                 PostalCode = employee.ContactInformation.PostalCode,
@@ -149,6 +202,16 @@ namespace HRManagement.Application
             _employeeRepository.EditContactInformation(employeeId, address, city, postalCode, state, workPhone, privatePhone, workEmail, privateEmail);
         }
 
+        public void EditEmploymentInformation(int employeeId, DateTime employmentDate, DateTime jubileeDate, DateTime dateProfessionalCompetence, DateTime dateTeachingSkills)
+        {
+            _employeeRepository.EditEmploymentInformation(employeeId, employmentDate, jubileeDate, dateProfessionalCompetence, dateTeachingSkills);
+        }
+
+        public void EditFinancialInformation(int employeeId, Decimal salary, DateTime nextSalaryDiscussion, string accountNumber, string bank)
+        {
+            _employeeRepository.EditFinancialInformation(employeeId, salary, nextSalaryDiscussion, accountNumber, bank);
+        }
+
         public CreateEmployeeViewModel GetEmployeeForCreate()
         {
             var positions = _positionRepository.GetAll();
@@ -164,9 +227,10 @@ namespace HRManagement.Application
         }
         public int CreateEmployee(CreateEmployeeViewModel input)
         {
-            var employee = _employeeRepository.CreateEmployee(input.PositionId, input.ProjectId, input.LastName, input.MiddleName, input.FirstName, input.DateOfBirth, input.Gender, input.Nationality, input.Languages, input.NationalIdentificationNumber, input.Salary);
+            var employee = _employeeRepository.CreateEmployee(input.PositionId, input.ProjectId, input.LastName, input.MiddleName, input.FirstName, input.DateOfBirth, input.Gender, input.Nationality, input.Languages, input.NationalIdentificationNumber);
             _employeeRepository.AddContactInformation(employee.Id, input.Address, input.City, input.PostalCode, input.State, input.WorkPhone, input.PrivatePhone, input.WorkEmail, input.PrivateEmail);
             _employeeRepository.AddEmploymentInformation(employee.Id, input.EmploymentDate, input.JubileeDate, input.DateForFormalProfessionalCompetence, input.DateForFormalTeachingSkills);
+            _employeeRepository.AddFinancialInformation(employee.Id, input.Salary, input.NextSalaryIncrease, input.AccountNumber, input.Bank);
             return employee.Id;
         }
 
@@ -175,5 +239,6 @@ namespace HRManagement.Application
             _employeeRepository.AttachImage(employeeId, imageUrl);
         }
 
+        
     }
 }

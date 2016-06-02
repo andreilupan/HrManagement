@@ -38,6 +38,13 @@ namespace HRManagement.ViewModels.Employee
         public string NationalIdentificationNumber { get; set; }
         [Display(Name = "Salary (EUR)")]
         public Decimal Salary { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Next salary discussion")]
+        public DateTime NextSalaryIncrease { get; set; }
+        [Display(Name = "Account number")]
+        public string AccountNumber { get; set; }
+        [Display(Name = "Bank")]
+        public string Bank { get; set; }
         public int PositionId { get; set; }
         public int ProjectId { get; set; }
         [Required]

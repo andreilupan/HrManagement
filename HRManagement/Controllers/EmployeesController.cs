@@ -76,6 +76,32 @@ namespace HRManagement.Controllers
 
             return View(model);
         }
+
+        //GET: Employees/5/EditEmploymentInformation
+        [HttpGet]
+        public ActionResult EditEmploymentInformation(int? employeeId)
+        {
+            if (employeeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var model = _employeeService.GetEmploymentInformationForEdit(employeeId);
+            return View("~/Views/Employees/GetEmploymentInformationForEdit.cshtml", model);
+        }
+
+        //GET: Employees/5/EditFinancialInformation
+        [HttpGet]
+        public ActionResult EditFinancialInformation(int? employeeId)
+        {
+            if (employeeId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var model = _employeeService.GetFinancialInformationForEdit(employeeId);
+            return View("~/Views/Employees/GetFinancialInformationForEdit.cshtml", model);
+        }
+
+        //GET: Employees/5/EditContactInformation
         [HttpGet]
         public ActionResult EditContactInformation(int? employeeId)
         {
@@ -121,6 +147,37 @@ namespace HRManagement.Controllers
             var model = _employeeService.GetContactInformationForEmployee(employeeId);
             return View(model);
         }
+
+
+        //GET: Employee/5/FinancialInformation
+
+        [HttpGet]
+        public ActionResult GetFinancialInformationForEmployee(int employeeId)
+        {
+            var model = _employeeService.GetFinancialInformationForEmployee(employeeId);
+            return View(model);
+        }
+
+        //POST: Employees/5/EditEmploymentInformation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEmploymentInformation(EditEmploymentInfomationForEmployeeViewModel input)
+        {
+            _employeeService.EditEmploymentInformation(input.Id, input.EmploymentDate, input.JubileeDate, input.DateForFormalProfessionalCompetence, input.DateForFormalTeachingSkills);
+            return RedirectToAction("Index");
+        }
+
+        //POST: Employees/5/EditFinancialInformation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditFinancialInformation(EditFinancialInformationForEmployeeViewModel input)
+        {
+            _employeeService.EditFinancialInformation(input.Id, input.Salary, input.NextSalaryIncrease, input.AccountNumber, input.Bank);
+            return RedirectToAction("Index");
+        }
+
+
+        //POST: Employees/5/EditContactInformation
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditContactInformation(EditContactInformationForEmployeeViewModel input)
@@ -129,6 +186,7 @@ namespace HRManagement.Controllers
             return RedirectToAction("Index");
         }
 
+        //GET: Employee/5/EmploymentInformation
         [HttpGet]
         public ActionResult GetEmploymentInformationForEmployee(int employeeId)
         {

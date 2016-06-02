@@ -9,7 +9,11 @@ namespace HRManagement.Application
     {
         List<Employee> GetAllEmployees();
         EditEmployeeViewModel GetEmployeeForEdit(int? id);
+        EditEmploymentInfomationForEmployeeViewModel GetEmploymentInformationForEdit(int? id);
         EditContactInformationForEmployeeViewModel GetContactInformationForEdit(int? id);
+        EditFinancialInformationForEmployeeViewModel GetFinancialInformationForEdit(int? id);
+        void EditFinancialInformation(int employeeId, Decimal salary, DateTime nextSalaryDiscussion, string accountNumber, string bank);
+        void EditEmploymentInformation(int employeeId, DateTime employmentDate, DateTime jubileeDate, DateTime dateProfessionalCompetence, DateTime dateTeachingSkills);
         void EditContactInformation(int employeeId, string address, string city, string postalCode, string state, string workPhone, string privatePhone, string workEmail, string privateEmail);
         void SetChangesForEmployee(int id, int positionId, int projectId, string lastName, string middleName, string firstName, DateTime dateOfBirth, Gender gender, string nationality, string nID);
         CreateEmployeeViewModel GetEmployeeForCreate();
@@ -17,6 +21,7 @@ namespace HRManagement.Application
         GetTrainingForEmployeeViewModel GetTrainingForEmployee(int? id);
         GetContactInformationForEmployeeViewModel GetContactInformationForEmployee(int? id);
         GetEmploymentInformationForEmployeeViewModel GetEmploymentInformationForEmployee(int? id);
+        GetFinancialInformationForEmployeeViewModel GetFinancialInformationForEmployee(int? id);
         void AttachImage(int employeeId, string imageUrl);
         //void CreateContactInformationForEmployee(string address, string city, string postalCode, string state, string workPhone, string privatePhone, string workEmail, string privateEmail);
     }

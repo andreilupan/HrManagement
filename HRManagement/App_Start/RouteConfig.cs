@@ -22,6 +22,19 @@ namespace HRManagement
                 );
 
             routes.MapRoute(
+                name: "EditEmployeeFinancialInformation",
+                url: "{controller}/{employeeId}/editFinancialInformation",
+                defaults: new { controller = "Employees", action = "EditFinancialInformation" }
+                );
+
+
+            routes.MapRoute(
+               name: "EditEmployeeEmploymentInformation",
+               url: "{controller}/{employeeId}/editEmploymentInformation",
+               defaults: new { controller = "Employees", action = "EditEmploymentInformation" }
+               );
+
+            routes.MapRoute(
                 name: "EmployeeTrainings",
                 url: "{controller}/{employeeId}/trainings",
                 defaults: new { controller = "Employees", action = "GetTrainingsForEmployee" }
@@ -32,6 +45,12 @@ namespace HRManagement
                url: "{controller}/{employeeId}/contactInformation",
                defaults: new { controller = "Employees", action = "GetContactInformationForEmployee" }
                );
+
+            routes.MapRoute(
+              name: "EmployeeFinancialInformation",
+              url: "{controller}/{employeeId}/financialInformation",
+              defaults: new { controller = "Employees", action = "GetFinancialInformationForEmployee" }
+              );
 
             routes.MapRoute(
                name: "EmployeeEmploymentInformation",
